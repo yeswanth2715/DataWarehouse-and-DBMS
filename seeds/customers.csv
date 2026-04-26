@@ -1,0 +1,91 @@
+customer_id,name,email,city,signup_date,acquisition_channel,segment,age_group,country,loaded_at
+1001, Anna Schneider , ANNA.SCHNEIDER1@MARKETMAIL.DE , Berlin ,2023-01-12,paid_social,standard,25-34,Germany,2026-04-26 15:00:00
+1002,Lukas Meyer,lukas.meyer2@marketmail.de,Hamburg,2023-02-02,paid_social,standard,35-44,Germany,2026-04-26 15:11:00
+1003,Mia Hoffmann,mia.hoffmann3@marketmail.de,Hamburg,2023-03-22,paid_social,premium,45-54,Germany,2026-04-26 15:22:00
+1004,Jonas Richter,jonas.richter4@marketmail.de,Frankfurt,2023-04-19,referral,standard,45-54,Germany,2026-04-26 15:33:00
+1005,Lea Neumann,lea.neumann5@marketmail.de,Frankfurt,2023-05-31,organic,premium,,Germany,2026-04-26 15:44:00
+1006,Felix Braun,felix.braun6@marketmail.de,Munich,2023-06-24,referral,standard,55+,Germany,2026-04-26 15:55:00
+1007,Sofia Vogel,sofia.vogel7@marketmail.de,Berlin,2023-07-08,email,premium,55+,Germany,2026-04-26 16:06:00
+1008,Noah Bauer,noah.bauer8@marketmail.de,Berlin,2023-08-10,,premium,25-34,Germany,2026-04-26 16:17:00
+1009,Clara Dietrich,clara.dietrich9@marketmail.de, Munich ,2023-09-17,email,standard,35-44,Germany,2026-04-26 16:28:00
+1010,Elias Seidel,elias.seidel10@marketmail.de,Munich,2023-10-21,referral,premium,18-24,Germany,2026-04-26 16:39:00
+1011, Hannah Schneider ,hannah.schneider11@marketmail.de,Munich,2023-11-20,referral,premium,18-24,Germany,2026-04-26 16:50:00
+1012,Finn Meyer,finn.meyer12@marketmail.de,Berlin,2023-12-25,referral,standard,18-24,Germany,2026-04-26 17:01:00
+1013,Emma Hoffmann, EMMA.HOFFMANN13@MARKETMAIL.DE ,Berlin,2024-01-03,referral,premium,45-54,Germany,2026-04-26 17:12:00
+1014,Paul Richter,paul.richter14@marketmail.de,Hamburg,2024-02-24,referral,standard,25-34,Germany,2026-04-26 17:23:00
+1015,Mila Neumann,mila.neumann15@marketmail.de,Berlin,2024-03-08,email,standard,18-24,Germany,2026-04-26 17:34:00
+1016,Leon Braun,leon.braun16@marketmail.de,Berlin,2024-04-02,paid_search,standard,45-54,Germany,2026-04-26 17:45:00
+1017,Nora Vogel,nora.vogel17@marketmail.de, Hamburg ,2024-05-25,paid_social,standard,18-24,Germany,2026-04-26 17:56:00
+1018,Luis Bauer,luis.bauer18@marketmail.de,Berlin,2024-06-15,referral,premium,25-34,Germany,2026-04-26 18:07:00
+1019,Ida Dietrich,ida.dietrich19@marketmail.de,Berlin,2024-07-28,email,standard,,Germany,2026-04-26 18:18:00
+1020,Ben Seidel,ben.seidel20@marketmail.de,Munich,2024-08-24,email,standard,35-44,Germany,2026-04-26 18:29:00
+1021, Greta Schneider ,greta.schneider21@marketmail.de,Frankfurt,2024-09-24,organic,standard,55+,Germany,2026-04-26 18:40:00
+1022,Tom Meyer,tom.meyer22@marketmail.de,Berlin,2024-10-24,paid_social,standard,55+,Germany,2026-04-26 18:51:00
+1023,Lina Hoffmann,lina.hoffmann23@marketmail.de,Hamburg,2024-11-08,referral,standard,,Germany,2026-04-26 19:02:00
+1024,David Richter,david.richter24@marketmail.de,Hamburg,2024-12-25,paid_search,standard,45-54,Germany,2026-04-26 19:13:00
+1025,Sarah Neumann, SARAH.NEUMANN25@MARKETMAIL.DE , Hamburg ,2023-01-18,referral,premium,18-24,Germany,2026-04-26 19:24:00
+1026,Max Braun,max.braun26@marketmail.de,Hamburg,2023-02-14,email,standard,18-24,Germany,2026-04-26 19:35:00
+1027,Elena Vogel,elena.vogel27@marketmail.de,Berlin,2023-03-19,organic,standard,45-54,Germany,2026-04-26 19:46:00
+1028,Tobias Bauer,tobias.bauer28@marketmail.de,Hamburg,2023-04-23,email,standard,35-44,Germany,2026-04-26 19:57:00
+1029,Julia Dietrich,julia.dietrich29@marketmail.de,Frankfurt,2023-05-28,organic,standard,18-24,Germany,2026-04-26 20:08:00
+1030,Samuel Seidel,samuel.seidel30@marketmail.de,Berlin,2023-06-11,organic,standard,55+,Germany,2026-04-26 20:19:00
+1031, Anna Schneider ,anna.schneider31@marketmail.de,Hamburg,2023-07-09,organic,standard,18-24,Germany,2026-04-26 20:30:00
+1032,Lukas Meyer,lukas.meyer32@marketmail.de,Hamburg,2023-08-15,paid_social,premium,45-54,Germany,2026-04-26 20:41:00
+1033,Mia Hoffmann,mia.hoffmann33@marketmail.de, Munich ,2023-09-11,paid_social,premium,18-24,Germany,2026-04-26 20:52:00
+1034,Jonas Richter,jonas.richter34@marketmail.de,Hamburg,2023-10-20,email,standard,25-34,Germany,2026-04-26 21:03:00
+1035,Lea Neumann,lea.neumann35@marketmail.de,Munich,2023-11-12,,standard,55+,Germany,2026-04-26 21:14:00
+1036,Felix Braun,felix.braun36@marketmail.de,Hamburg,2023-12-10,email,standard,18-24,Germany,2026-04-26 21:25:00
+1037,Sofia Vogel, SOFIA.VOGEL37@MARKETMAIL.DE ,Hamburg,2024-01-31,paid_search,standard,35-44,Germany,2026-04-26 21:36:00
+1038,Noah Bauer,noah.bauer38@marketmail.de,Berlin,2024-02-18,email,standard,25-34,Germany,2026-04-26 21:47:00
+1039,Clara Dietrich,clara.dietrich39@marketmail.de,Berlin,2024-03-28,email,standard,35-44,Germany,2026-04-26 21:58:00
+1040,Elias Seidel,elias.seidel40@marketmail.de,Munich,2024-04-07,email,standard,,Germany,2026-04-26 22:09:00
+1041, Hannah Schneider ,hannah.schneider41@marketmail.de, Hamburg ,2024-05-26,referral,standard,45-54,Germany,2026-04-26 22:20:00
+1042,Finn Meyer,finn.meyer42@marketmail.de,Munich,2024-06-01,paid_social,standard,55+,Germany,2026-04-26 22:31:00
+1043,Emma Hoffmann,emma.hoffmann43@marketmail.de,Munich,2024-07-09,paid_social,standard,25-34,Germany,2026-04-26 22:42:00
+1044,Paul Richter,paul.richter44@marketmail.de,Munich,2024-08-25,organic,standard,35-44,Germany,2026-04-26 22:53:00
+1045,Mila Neumann,mila.neumann45@marketmail.de,Frankfurt,2024-09-13,paid_search,standard,25-34,Germany,2026-04-26 23:04:00
+1046,Leon Braun,leon.braun46@marketmail.de,Berlin,2024-10-27,referral,standard,18-24,Germany,2026-04-26 23:15:00
+1047,Nora Vogel,nora.vogel47@marketmail.de,Munich,2024-11-19,organic,premium,,Germany,2026-04-26 23:26:00
+1048,Luis Bauer,luis.bauer48@marketmail.de,Munich,2024-12-25,paid_social,premium,55+,Germany,2026-04-26 23:37:00
+1049,Ida Dietrich, IDA.DIETRICH49@MARKETMAIL.DE , Hamburg ,2023-01-24,referral,standard,45-54,Germany,2026-04-26 23:48:00
+1050,Ben Seidel,ben.seidel50@marketmail.de,Berlin,2023-02-03,paid_search,standard,25-34,Germany,2026-04-26 23:59:00
+1051, Greta Schneider ,greta.schneider51@marketmail.de,Frankfurt,2023-03-26,paid_search,standard,55+,Germany,2026-04-27 00:10:00
+1052,Tom Meyer,tom.meyer52@marketmail.de,Frankfurt,2023-04-29,email,premium,18-24,Germany,2026-04-27 00:21:00
+1053,Lina Hoffmann,lina.hoffmann53@marketmail.de,Munich,2023-05-13,organic,standard,55+,Germany,2026-04-27 00:32:00
+1054,David Richter,david.richter54@marketmail.de,Berlin,2023-06-25,paid_search,premium,55+,Germany,2026-04-27 00:43:00
+1055,Sarah Neumann,sarah.neumann55@marketmail.de,Frankfurt,2023-07-30,organic,standard,18-24,Germany,2026-04-27 00:54:00
+1056,Max Braun,max.braun56@marketmail.de,Frankfurt,2023-08-29,paid_search,standard,55+,Germany,2026-04-27 01:05:00
+1057,Elena Vogel,elena.vogel57@marketmail.de, Berlin ,2023-09-04,paid_search,standard,18-24,Germany,2026-04-27 01:16:00
+1058,Tobias Bauer,tobias.bauer58@marketmail.de,Hamburg,2023-10-18,referral,standard,55+,Germany,2026-04-27 01:27:00
+1059,Julia Dietrich,julia.dietrich59@marketmail.de,Munich,2023-11-09,referral,premium,45-54,Germany,2026-04-27 01:38:00
+1060,Samuel Seidel,samuel.seidel60@marketmail.de,Berlin,2023-12-06,referral,standard,45-54,Germany,2026-04-27 01:49:00
+1061, Anna Schneider , ANNA.SCHNEIDER61@MARKETMAIL.DE ,Hamburg,2024-01-05,paid_social,premium,45-54,Germany,2026-04-27 02:00:00
+1062,Lukas Meyer,lukas.meyer62@marketmail.de,Frankfurt,2024-02-29,paid_search,premium,55+,Germany,2026-04-27 02:11:00
+1063,Mia Hoffmann,mia.hoffmann63@marketmail.de,Berlin,2024-03-19,email,standard,55+,Germany,2026-04-27 02:22:00
+1064,Jonas Richter,jonas.richter64@marketmail.de,Berlin,2024-04-20,referral,standard,25-34,Germany,2026-04-27 02:33:00
+1065,Lea Neumann,lea.neumann65@marketmail.de, Frankfurt ,2024-05-22,referral,premium,,Germany,2026-04-27 02:44:00
+1066,Felix Braun,felix.braun66@marketmail.de,Hamburg,2024-06-27,referral,standard,45-54,Germany,2026-04-27 02:55:00
+1067,Sofia Vogel,sofia.vogel67@marketmail.de,Berlin,2024-07-24,paid_social,standard,18-24,Germany,2026-04-27 03:06:00
+1068,Noah Bauer,noah.bauer68@marketmail.de,Berlin,2024-08-21,email,standard,35-44,Germany,2026-04-27 03:17:00
+1069,Clara Dietrich,clara.dietrich69@marketmail.de,Munich,2024-09-01,referral,standard,55+,Germany,2026-04-27 03:28:00
+1070,Elias Seidel,elias.seidel70@marketmail.de,Hamburg,2024-10-09,paid_social,standard,55+,Germany,2026-04-27 03:39:00
+1071, Hannah Schneider ,hannah.schneider71@marketmail.de,Berlin,2024-11-22,organic,premium,55+,Germany,2026-04-27 03:50:00
+1072,Finn Meyer,finn.meyer72@marketmail.de,Berlin,2024-12-16,,standard,35-44,Germany,2026-04-27 04:01:00
+1073,Emma Hoffmann, EMMA.HOFFMANN73@MARKETMAIL.DE , Munich ,2023-01-22,email,premium,45-54,Germany,2026-04-27 04:12:00
+1074,Paul Richter,paul.richter74@marketmail.de,Berlin,2023-02-06,email,premium,25-34,Germany,2026-04-27 04:23:00
+1075,Mila Neumann,mila.neumann75@marketmail.de,Berlin,2023-03-19,paid_search,standard,25-34,Germany,2026-04-27 04:34:00
+1076,Leon Braun,leon.braun76@marketmail.de,Berlin,2023-04-23,email,standard,18-24,Germany,2026-04-27 04:45:00
+1077,Nora Vogel,nora.vogel77@marketmail.de,Munich,2023-05-07,paid_social,premium,18-24,Germany,2026-04-27 04:56:00
+1078,Luis Bauer,luis.bauer78@marketmail.de,Frankfurt,2023-06-03,paid_search,standard,,Germany,2026-04-27 05:07:00
+1079,Ida Dietrich,ida.dietrich79@marketmail.de,Hamburg,2023-07-21,email,standard,35-44,Germany,2026-04-27 05:18:00
+1080,Ben Seidel,ben.seidel80@marketmail.de,Berlin,2023-08-22,organic,standard,18-24,Germany,2026-04-27 05:29:00
+1081, Greta Schneider ,greta.schneider81@marketmail.de, Berlin ,2023-09-30,referral,standard,55+,Germany,2026-04-27 05:40:00
+1082,Tom Meyer,tom.meyer82@marketmail.de,Berlin,2023-10-06,paid_search,standard,35-44,Germany,2026-04-27 05:51:00
+1083,Lina Hoffmann,lina.hoffmann83@marketmail.de,Berlin,2023-11-16,organic,premium,25-34,Germany,2026-04-27 06:02:00
+1084,David Richter,david.richter84@marketmail.de,Berlin,2023-12-12,referral,premium,45-54,Germany,2026-04-27 06:13:00
+1085,Sarah Neumann, SARAH.NEUMANN85@MARKETMAIL.DE ,Frankfurt,2024-01-06,paid_social,standard,35-44,Germany,2026-04-27 06:24:00
+1086,Max Braun,anna.schneider1@marketmail.de,Berlin,2024-12-10,paid_social,standard,35-44,Germany,2026-04-27 06:35:00
+1087,Elena Vogel,lukas.meyer2@marketmail.de,Berlin,2024-12-11,referral,premium,35-44,Germany,2026-04-27 06:46:00
+1088,Tobias Bauer,mia.hoffmann3@marketmail.de,Hamburg,2024-12-12,organic,premium,55+,Germany,2026-04-27 06:57:00
+1089,Julia Dietrich,jonas.richter4@marketmail.de, Hamburg ,2024-12-13,email,standard,,Germany,2026-04-27 07:08:00
+1090,Samuel Seidel,lea.neumann5@marketmail.de,Berlin,2024-12-14,referral,standard,55+,Germany,2026-04-27 07:19:00

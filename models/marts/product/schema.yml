@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: mart_funnel_analysis
+    description: Funnel mart used to understand where sessions drop off by acquisition channel and device.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - channel
+            - device_type
+            - step_order
+    columns:
+      - name: channel
+        description: Acquisition channel tied to the session.
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['paid_search', 'organic', 'referral', 'email', 'paid_social', 'unknown']
+      - name: device_type
+        description: Device type tied to the session.
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['mobile', 'desktop']
+      - name: step_order
+        description: Ordered numeric representation of the funnel stage.
+      - name: funnel_stage
+        description: Funnel stage name.
+      - name: sessions_at_step
+        description: Number of sessions that reached at least this funnel stage.
+      - name: drop_off_rate
+        description: Share of sessions that did not advance to the next stage.
+      - name: conversion_rate_to_purchase
+        description: Share of sessions at this step that ultimately converted to purchase.
+      - name: biggest_dropoff_step_for_channel
+        description: Stage with the highest average drop-off for the channel.
+      - name: biggest_dropoff_rate_for_channel
+        description: Highest average drop-off rate observed across funnel steps for the channel.
+
+  - name: mart_campaign_roi
+    description: Campaign-level ROI mart summarizing media efficiency and attributed revenue.
+    columns:
+      - name: campaign_id
+        description: Campaign identifier.
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_campaigns')
+              field: campaign_id
+      - name: campaign_name
+        description: Campaign display name.
+      - name: channel
+        description: Acquisition channel where the campaign ran.
+        tests:
+          - accepted_values:
+              values: ['paid_search', 'organic', 'referral', 'email', 'paid_social']
+      - name: target_segment
+        description: Audience segment targeted by the campaign.
+      - name: start_date
+        description: Campaign start date.
+      - name: end_date
+        description: Campaign end date.
+      - name: budget_eur
+        description: Campaign budget in EUR.
+      - name: impressions
+        description: Campaign impressions.
+      - name: clicks
+        description: Campaign clicks.
+      - name: conversions
+        description: Reported conversions.
+      - name: ctr
+        description: Click-through rate.
+      - name: cvr
+        description: Conversion rate.
+      - name: attributed_revenue
+        description: Revenue attributed to the campaign.
+      - name: roas
+        description: Return on ad spend.
+      - name: cost_per_conversion
+        description: Cost per reported conversion.
+      - name: roi_tier
+        description: Bucketed ROI quality tier.
+        tests:
+          - accepted_values:
+              values: ['excellent', 'good', 'poor']
+      - name: high_performing
+        description: Boolean flag for campaigns with ROAS above 3.

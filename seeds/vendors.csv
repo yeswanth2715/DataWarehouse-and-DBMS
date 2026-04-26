@@ -1,0 +1,16 @@
+vendor_id,vendor_name,category,city,commission_rate,onboarded_date,status,rating,loaded_at
+2001, SpreeEats ,FOOD,Berlin,0.14,2022-11-14,active,4.70,2026-05-05 19:00:00
+2002,MitteKitchen,food,Berlin,0.16,2023-01-08,active,4.50,2026-05-05 19:11:00
+2003,HafenGoods,electronics,Hamburg,0.11,2023-02-20,active,4.20,2026-05-05 19:22:00
+2004,ElbeLiving,home,Hamburg,0.10,2023-03-12,inactive,3.90,2026-05-05 19:33:00
+2005, BavariaBasics ,lifestyle,Munich,0.09,2023-04-04,active,4.00,2026-05-05 19:44:00
+2006,AlpenStyle,FASHION,Munich,0.18,2023-05-15,active,4.80,2026-05-05 19:55:00
+2007,MainMarket,home,Frankfurt,0.12,2023-06-10,active,4.10,2026-05-05 20:06:00
+2008,SkylineSelect,electronics,Frankfurt,0.17,2023-06-28,suspended,3.60,2026-05-05 20:17:00
+2009, PrenzlauPantry ,food,Berlin,0.13,2023-07-18,active,4.60,2026-05-05 20:28:00
+2010,IsarTech,electronics,Munich,0.15,2023-08-21,active,4.40,2026-05-05 20:39:00
+2011,NordicNest,HOME,Hamburg,0.08,2023-09-09,inactive,3.80,2026-05-05 20:50:00
+2012,UrbanCanvas,lifestyle,Berlin,0.10,2023-10-17,active,4.30,2026-05-05 21:01:00
+2013, RheinRunway ,fashion,Frankfurt,0.20,2023-11-05,active,4.90,2026-05-05 21:12:00
+2014,CityCycle,lifestyle,Berlin,0.09,2024-01-12,active,4.10,2026-05-05 21:23:00
+2015,HarborThreads,fashion,Hamburg,0.19,2024-02-14,active,4.50,2026-05-05 21:34:00

@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: int_orders_enriched
+    description: Order-level business logic layer combining cleaned orders with customer and vendor context.
+    columns:
+      - name: order_id
+        description: Order identifier inherited from the staged order model.
+      - name: customer_id
+        description: Customer identifier linked to the order.
+      - name: vendor_id
+        description: Vendor identifier linked to the order.
+      - name: customer_segment
+        description: Customer segment joined from the customer dimension.
+      - name: acquisition_channel
+        description: Customer acquisition source joined from the customer dimension.
+      - name: vendor_category
+        description: Vendor category joined from the vendor dimension.
+      - name: vendor_revenue
+        description: Vendor commission revenue derived from net order value and commission rate.
+      - name: days_to_order
+        description: Days between signup and the customer's first order.
+
+  - name: int_customer_orders_summary
+    description: Customer-level order rollup used for churn, LTV, and segmentation logic.
+    columns:
+      - name: customer_id
+        description: Customer identifier.
+      - name: total_orders
+        description: Total non-future orders linked to the customer.
+      - name: total_spend
+        description: Realized spend after excluding cancelled and refunded revenue.
+      - name: avg_order_value
+        description: Average realized order value.
+      - name: first_order_date
+        description: First order date for the customer.
+      - name: last_order_date
+        description: Most recent order date for the customer.
+      - name: days_since_last_order
+        description: Days since the customer last placed an order.
+      - name: churn_flag
+        description: Boolean flag for customers inactive for more than 90 days.
+      - name: ltv_segment
+        description: Customer lifetime spend segment derived from total spend.
+
+  - name: int_campaign_performance
+    description: Campaign attribution layer that aligns orders to campaigns using acquisition channel and campaign dates.
+    columns:
+      - name: campaign_id
+        description: Campaign identifier.
+      - name: revenue_attributed
+        description: Revenue attributed to the campaign based on matching customer channel and order timing.
+      - name: roas
+        description: Return on ad spend from attributed revenue versus budget.
+      - name: high_performing
+        description: Boolean flag for campaigns with ROAS above 3.
+
+  - name: int_funnel_sessions
+    description: Session-level funnel rollup used to measure drop-off between event stages.
+    columns:
+      - name: session_id
+        description: Session identifier after cleaning.
+      - name: customer_id
+        description: Customer tied to the session.
+      - name: max_funnel_step
+        description: Furthest funnel stage reached within the session.
+      - name: conversion_flag
+        description: Boolean flag for sessions that reached purchase.
+      - name: acquisition_channel
+        description: Customer acquisition source for funnel attribution.
+      - name: device_type
+        description: Device used during the session.

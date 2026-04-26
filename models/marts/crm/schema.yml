@@ -1,0 +1,90 @@
+version: 2
+
+models:
+  - name: mart_customer_segments
+    description: CRM mart providing a full customer profile with value, churn, and retention labels.
+    columns:
+      - name: customer_id
+        description: Customer identifier.
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+          - dbt_expectations.expect_column_proportion_of_unique_values_to_be_between:
+              min_value: 0.99
+              max_value: 1
+      - name: customer_name
+        description: Customer full name.
+      - name: customer_email
+        description: Customer email address.
+      - name: segment
+        description: Commercial segment.
+        tests:
+          - accepted_values:
+              values: ['premium', 'standard']
+      - name: ltv_segment
+        description: Lifetime value segment derived from total spend.
+        tests:
+          - accepted_values:
+              values: ['high', 'mid', 'low']
+      - name: churn_flag
+        description: Boolean churn flag based on recency.
+      - name: acquisition_channel
+        description: Acquisition source.
+        tests:
+          - accepted_values:
+              values: ['paid_search', 'organic', 'referral', 'email', 'paid_social', 'unknown']
+      - name: city
+        description: Primary customer city.
+      - name: age_group
+        description: Customer age band.
+      - name: country
+        description: Customer country.
+      - name: is_premium
+        description: Boolean premium flag.
+      - name: total_orders
+        description: Total order count for the customer.
+      - name: total_spend
+        description: Total realized customer spend.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 10000
+      - name: avg_order_value
+        description: Average realized order value.
+      - name: first_order_date
+        description: First order date.
+      - name: last_order_date
+        description: Most recent order date.
+      - name: days_since_last_order
+        description: Days since the most recent order.
+      - name: retention_band
+        description: Retention bucket based on customer recency.
+        tests:
+          - accepted_values:
+              values: ['new', 'active', 'at_risk', 'churned']
+
+  - name: mart_cohort_retention
+    description: Monthly cohort retention matrix showing customer activity after signup month.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - cohort_month
+            - months_since_signup
+    columns:
+      - name: cohort_month
+        description: First month when the customer cohort signed up.
+        tests:
+          - not_null
+      - name: months_since_signup
+        description: Month offset from cohort start.
+        tests:
+          - not_null
+      - name: cohort_size
+        description: Number of customers in the cohort.
+      - name: retained_customers
+        description: Customers in the cohort with activity in the offset month.
+      - name: retention_rate
+        description: Retained customer share of the original cohort.

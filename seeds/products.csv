@@ -1,0 +1,51 @@
+product_id,vendor_id,product_name,category,base_price,stock_quantity,is_active,created_at,loaded_at
+3001,2001,Artisan Pretzel Box,food,33.84,50,true,2023-01-27,2026-05-18 00:31:00
+3002,2001,Cold Brew Sampler,food,15.97,224,true,2023-01-20,2026-05-18 00:42:00
+3003,2001, Vegan Snack Crate ,food,42.50,220,true,2023-04-21,2026-05-18 00:53:00
+3004,2001,Berlin Curry Sauce Kit,food,25.25,6,true,2023-11-18,2026-05-18 01:04:00
+3005,2002,Organic Pasta Bundle,food,28.51,35,true,2023-09-13,2026-05-18 01:26:00
+3006,2002,Chef's Weekly Bento,food,37.58,158,false,2023-09-22,2026-05-18 01:37:00
+3007,2002,Street Food Tasting Set,food,12.55,72,true,2023-01-04,2026-05-18 01:48:00
+3008,2002,Breakfast Pantry Pack,food,40.05,100,true,2023-01-21,2026-05-18 01:59:00
+3009,2003,Noise Cancel Headphones,electronics,27.79,41,true,2023-02-24,2026-05-18 02:21:00
+3010,2003, Portable Bluetooth Speaker ,electronics,158.88,5,true,2023-10-06,2026-05-18 02:32:00
+3011,2003,USB-C Power Hub,electronics,86.63,172,true,2023-05-14,2026-05-18 02:43:00
+3012,2004,Ceramic Dinner Set,home,55.32,60,true,2023-12-13,2026-05-18 03:05:00
+3013,2004,Oak Bedside Lamp,home,29.34,93,true,2023-08-14,2026-05-18 03:16:00
+3014,2004,Soft Throw Blanket,home,49.39,48,true,2023-03-26,2026-05-18 03:27:00
+3015,2005,Commuter Water Bottle,lifestyle,40.46,13,true,2023-03-27,2026-05-18 03:49:00
+3016,2005,Yoga Recovery Kit,lifestyle,18.28,25,true,2023-08-11,2026-05-18 04:00:00
+3017,2005, Travel Organizer Set ,lifestyle,52.97,16,false,2023-04-14,2026-05-18 04:11:00
+3018,2006,Tailored Wool Coat,fashion,96.41,146,true,2023-09-10,2026-05-18 04:33:00
+3019,2006,Classic Leather Belt,fashion,234.32,214,true,2023-05-02,2026-05-18 04:44:00
+3020,2006,Relaxed Linen Shirt,fashion,111.72,193,true,2023-11-02,2026-05-18 04:55:00
+3021,2006,Everyday Sneakers,fashion,65.56,219,false,2023-11-24,2026-05-18 05:06:00
+3022,2007,Minimal Wall Shelf,home,69.79,176,true,2023-01-23,2026-05-18 05:28:00
+3023,2007,Air Purifier Mini,home,90.23,39,true,2023-08-30,2026-05-18 05:39:00
+3024,2007, Marble Serving Tray ,home,83.07,64,true,2023-11-14,2026-05-18 05:50:00
+3025,2008,Smart Home Camera,electronics,111.79,144,true,2023-09-18,2026-05-18 06:12:00
+3026,2008,Mechanical Keyboard,electronics,193.48,116,true,2023-07-04,2026-05-18 06:23:00
+3027,2008,Wireless Charging Pad,electronics,136.33,83,true,2023-11-30,2026-05-18 06:34:00
+3028,2009,Matcha Dessert Box,food,20.64,81,true,2023-04-01,2026-05-18 06:56:00
+3029,2009,Mediterranean Dip Trio,food,13.58,162,true,2023-02-03,2026-05-18 07:07:00
+3030,2009,Artisan Pretzel Box,food,18.73,165,true,2023-12-22,2026-05-18 07:18:00
+3031,2009, Cold Brew Sampler ,food,32.02,69,true,2023-01-11,2026-05-18 07:29:00
+3032,2010,27 Inch Office Monitor,electronics,182.88,58,true,2023-12-21,2026-05-18 07:51:00
+3033,2010,Compact Gaming Mouse,electronics,264.81,32,false,2023-03-31,2026-05-18 08:02:00
+3034,2010,Smart Fitness Watch,electronics,36.90,57,true,2023-07-09,2026-05-18 08:13:00
+3035,2010,4K Streaming Stick,electronics,244.51,234,true,2023-12-18,2026-05-18 08:24:00
+3036,2011,Kitchen Knife Trio,home,58.10,154,true,2024-08-25,2026-05-18 08:46:00
+3037,2011,Bathroom Towel Set,home,66.40,221,true,2024-06-12,2026-05-18 08:57:00
+3038,2011, Glass Storage Jars ,home,58.39,85,true,2024-11-09,2026-05-18 09:08:00
+3039,2012,Reflective City Backpack,lifestyle,21.08,238,true,2024-06-09,2026-05-18 09:30:00
+3040,2012,Desk Wellness Bundle,lifestyle,69.31,27,false,2024-06-11,2026-05-18 09:41:00
+3041,2012,Weekend Picnic Blanket,lifestyle,67.56,31,true,2024-07-01,2026-05-18 09:52:00
+3042,2012,Minimalist Journal Pack,lifestyle,87.14,214,true,2024-03-23,2026-05-18 10:03:00
+3043,2013,Merino Knit Sweater,fashion,207.63,131,true,2024-12-08,2026-05-18 10:25:00
+3044,2013,Structured Tote Bag,fashion,108.62,215,true,2024-09-24,2026-05-18 10:36:00
+3045,2013, City Runner Jacket ,fashion,209.01,72,true,2024-06-04,2026-05-18 10:47:00
+3046,2014,Urban Ride Helmet,lifestyle,37.65,85,true,2024-11-23,2026-05-18 11:09:00
+3047,2014,Scented Focus Candle,lifestyle,61.22,2,true,2024-01-14,2026-05-18 11:20:00
+3048,2014,Reusable Coffee Cup,lifestyle,47.09,240,false,2024-07-17,2026-05-18 11:31:00
+3049,2015,Cashmere Scarf,fashion,137.80,159,true,2024-07-06,2026-05-18 11:53:00
+3050,2015,Slim Fit Chinos,fashion,104.04,72,true,2024-04-08,2026-05-18 12:04:00

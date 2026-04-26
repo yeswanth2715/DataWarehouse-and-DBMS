@@ -1,0 +1,316 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: Cleaned and deduplicated customer dimension used across CRM, revenue, and funnel analysis.
+    columns:
+      - name: customer_id
+        description: Surviving customer identifier after email-level deduplication.
+        tests:
+          - not_null
+          - unique
+      - name: customer_name
+        description: Trimmed customer full name for reporting.
+      - name: customer_email
+        description: Lowercased and trimmed email address used as the deduplication key.
+      - name: city
+        description: Cleaned delivery city for the customer.
+      - name: signup_date
+        description: Customer signup date used for cohorting and time-to-first-order analysis.
+      - name: acquisition_channel
+        description: Acquisition source after null handling and standardization.
+        tests:
+          - accepted_values:
+              values: ['paid_search', 'organic', 'referral', 'email', 'paid_social', 'unknown']
+      - name: segment
+        description: Customer commercial segment.
+        tests:
+          - accepted_values:
+              values: ['premium', 'standard']
+      - name: age_group
+        description: Customer age band when available.
+      - name: country
+        description: Customer country.
+      - name: is_premium
+        description: Boolean premium flag derived from the source segment.
+      - name: source_loaded_at
+        description: Ingestion timestamp carried from the raw seed.
+
+  - name: stg_orders
+    description: Typed order header records with cleaned status flags and revenue fields for downstream finance analysis.
+    columns:
+      - name: order_id
+        description: Unique order identifier.
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: Customer identifier tied to the order.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+          - dbt_expectations.expect_column_proportion_of_unique_values_to_be_between:
+              min_value: 0.30
+              max_value: 0.95
+      - name: vendor_id
+        description: Vendor identifier tied to the order.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_vendors')
+              field: vendor_id
+      - name: order_date
+        description: Cleaned order date.
+      - name: order_status
+        description: Normalized order lifecycle state.
+        tests:
+          - accepted_values:
+              values: ['completed', 'cancelled', 'refunded']
+      - name: total_amount
+        description: Gross order amount after filtering out null rows.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 2000
+      - name: discount_amount
+        description: Order-level discount amount.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 300
+      - name: payment_method
+        description: Normalized payment method.
+        tests:
+          - accepted_values:
+              values: ['credit_card', 'paypal', 'bank_transfer', 'voucher']
+      - name: delivery_city
+        description: Cleaned delivery city captured on the order.
+      - name: source_loaded_at
+        description: Ingestion timestamp carried from the raw seed.
+      - name: net_amount
+        description: Net order amount after subtracting the order-level discount.
+      - name: order_year
+        description: Calendar year extracted from the order date.
+      - name: order_month
+        description: Calendar month extracted from the order date.
+      - name: order_quarter
+        description: Year-quarter label for revenue trending.
+      - name: is_refunded
+        description: Boolean flag for refunded orders.
+      - name: is_cancelled
+        description: Boolean flag for cancelled orders.
+      - name: is_future_order
+        description: Boolean flag for orders dated beyond the current runtime.
+
+  - name: stg_products
+    description: Cleaned product catalog with pricing tiers and active-state normalization.
+    columns:
+      - name: product_id
+        description: Unique product identifier.
+        tests:
+          - not_null
+          - unique
+      - name: vendor_id
+        description: Owning vendor for the product.
+        tests:
+          - relationships:
+              to: ref('stg_vendors')
+              field: vendor_id
+      - name: product_name
+        description: Trimmed product display name.
+      - name: category
+        description: Normalized product category.
+      - name: base_price
+        description: Standard catalog price for the product.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 500
+      - name: stock_quantity
+        description: Source stock quantity.
+      - name: is_active
+        description: Boolean active-state flag.
+      - name: created_at
+        description: Product creation date.
+      - name: source_loaded_at
+        description: Ingestion timestamp carried from the raw seed.
+      - name: price_tier
+        description: Derived pricing tier for segmentation.
+        tests:
+          - accepted_values:
+              values: ['budget', 'mid', 'premium']
+
+  - name: stg_order_items
+    description: Typed order line items enriched with product pricing to expose raw transaction inconsistencies.
+    columns:
+      - name: item_id
+        description: Unique order item identifier.
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        description: Parent order identifier.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+      - name: product_id
+        description: Ordered product identifier.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
+      - name: quantity
+        description: Ordered quantity.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+              max_value: 10
+      - name: unit_price
+        description: Transaction unit price on the line item.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 500
+      - name: discount_pct
+        description: Percentage discount applied to the line item.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 100
+      - name: source_loaded_at
+        description: Ingestion timestamp carried from the raw seed.
+      - name: line_total
+        description: Net line-item revenue after item-level discount.
+      - name: base_price
+        description: Catalog price joined from the cleaned products model.
+      - name: product_is_active
+        description: Product active-state flag pulled from the product dimension.
+      - name: is_price_inconsistent
+        description: Boolean flag when the transaction price does not match the catalog base price.
+
+  - name: stg_vendors
+    description: Cleaned vendor dimension used for performance, commission, and supply health analysis.
+    columns:
+      - name: vendor_id
+        description: Unique vendor identifier.
+        tests:
+          - not_null
+          - unique
+      - name: vendor_name
+        description: Cleaned vendor display name.
+      - name: vendor_category
+        description: Normalized vendor business category.
+      - name: city
+        description: Vendor operating city.
+      - name: commission_rate
+        description: Marketplace commission rate as a decimal share of order value.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1
+      - name: onboarded_date
+        description: Vendor onboarding date.
+      - name: vendor_status
+        description: Current vendor operating status.
+        tests:
+          - accepted_values:
+              values: ['active', 'inactive', 'suspended']
+      - name: rating
+        description: Vendor customer rating.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 5
+      - name: source_loaded_at
+        description: Ingestion timestamp carried from the raw seed.
+      - name: is_vendor_inactive_or_suspended
+        description: Convenience flag for operationally risky vendors.
+
+  - name: stg_campaigns
+    description: Marketing campaign staging layer with cleaned dates and derived media efficiency metrics.
+    columns:
+      - name: campaign_id
+        description: Unique campaign identifier.
+        tests:
+          - not_null
+          - unique
+      - name: campaign_name
+        description: Business-friendly campaign name.
+      - name: channel
+        description: Normalized acquisition channel.
+        tests:
+          - accepted_values:
+              values: ['paid_search', 'organic', 'referral', 'email', 'paid_social']
+      - name: start_date
+        description: Campaign start date.
+      - name: end_date
+        description: Campaign end date.
+      - name: budget_eur
+        description: Campaign budget in EUR.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 20000
+      - name: impressions
+        description: Campaign impressions.
+      - name: clicks
+        description: Campaign clicks.
+      - name: conversions
+        description: Campaign conversions.
+      - name: target_segment
+        description: Customer segment targeted by the campaign.
+        tests:
+          - accepted_values:
+              values: ['premium', 'standard']
+      - name: source_loaded_at
+        description: Ingestion timestamp carried from the raw seed.
+      - name: ctr
+        description: Click-through rate derived from clicks and impressions.
+      - name: cvr
+        description: Conversion rate derived from conversions and clicks.
+      - name: is_date_error
+        description: Boolean flag when the campaign ends before it starts.
+
+  - name: stg_events
+    description: Session-level clickstream event staging model with funnel ranking and cleaned session identifiers.
+    columns:
+      - name: event_id
+        description: Unique event identifier.
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: Customer who generated the event.
+        tests:
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: session_id
+        description: Cleaned session identifier with nulls coalesced to unknown_session.
+      - name: event_type
+        description: Normalized event type from the clickstream.
+        tests:
+          - accepted_values:
+              values: ['page_view', 'product_view', 'add_to_cart', 'checkout_start', 'checkout_complete', 'purchase']
+      - name: event_timestamp
+        description: Event timestamp.
+      - name: event_date
+        description: Calendar date derived from the event timestamp.
+      - name: page_url
+        description: Page route where the event occurred.
+      - name: device_type
+        description: Device form factor used during the event.
+        tests:
+          - accepted_values:
+              values: ['mobile', 'desktop']
+      - name: source_loaded_at
+        description: Ingestion timestamp carried from the raw seed.
+      - name: event_rank_in_session
+        description: Rank order of the event within the session.
+      - name: funnel_step
+        description: Integer funnel stage used to measure drop-off from browse to purchase.

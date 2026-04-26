@@ -1,0 +1,81 @@
+version: 2
+
+models:
+  - name: mart_revenue
+    description: Monthly finance mart powering revenue, refund, discount, and growth reporting.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - year
+            - month
+    columns:
+      - name: year
+        description: Revenue year.
+        tests:
+          - not_null
+      - name: month
+        description: Revenue month.
+        tests:
+          - not_null
+      - name: quarter
+        description: Revenue quarter number.
+      - name: gross_revenue
+        description: Sum of gross order value before discounts and refunds.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 50000
+      - name: total_discounts
+        description: Total order-level discounts applied in the month.
+      - name: net_revenue
+        description: Revenue after discounts and before refunds.
+      - name: refund_amount
+        description: Value of orders that were refunded in the month.
+      - name: net_revenue_after_refunds
+        description: Net recognized revenue after discounts and refunds.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 50000
+      - name: order_count
+        description: Number of non-cancelled orders contributing to the month.
+      - name: avg_order_value
+        description: Average recognized order value.
+      - name: mom_growth_pct
+        description: Month-over-month growth percentage in recognized net revenue.
+
+  - name: mart_vendor_performance
+    description: Vendor performance mart used to rank suppliers by GMV, commissions, ratings, and return rate.
+    columns:
+      - name: vendor_id
+        description: Vendor identifier.
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_vendors')
+              field: vendor_id
+      - name: vendor_name
+        description: Vendor display name.
+      - name: vendor_category
+        description: Vendor category.
+      - name: vendor_status
+        description: Current operational status of the vendor.
+      - name: avg_rating
+        description: Average vendor rating across orders.
+      - name: gmv
+        description: Gross merchandise value attributed to the vendor.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 100000
+      - name: vendor_revenue
+        description: Recognized commission revenue from the vendor.
+      - name: order_count
+        description: Number of non-cancelled orders linked to the vendor.
+      - name: return_rate
+        description: Share of vendor orders that were refunded.
+      - name: gmv_rank
+        description: Dense rank of the vendor by GMV.
+      - name: underperforming
+        description: Boolean flag for vendors in the bottom 20 percent of GMV.

@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RevOps Stakeholder Dashboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap');
+    :root {
+      --bg: #f3eee6;
+      --paper: rgba(255,255,255,0.82);
+      --ink: #0f2230;
+      --muted: #5c707a;
+      --line: rgba(15, 34, 48, 0.10);
+      --product: #d97706;
+      --crm: #2563eb;
+      --finance: #0f766e;
+      --exec: #8b5cf6;
+      --shadow: 0 20px 55px rgba(15, 34, 48, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(217, 119, 6, 0.15), transparent 28%),
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.10), transparent 26%),
+        linear-gradient(180deg, #f8f2e8 0%, #eef4f2 100%);
+      font-family: "IBM Plex Sans", sans-serif;
+    }
+    .shell {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 32px 18px 52px;
+    }
+    .hero, .panel, .metric-card, .nav-card, .question-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--paper);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      margin: 0 0 10px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+    }
+    .hero-aside {
+      display: grid;
+      gap: 12px;
+    }
+    .nav-card, .question-card, .panel {
+      padding: 22px;
+    }
+    .top-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .jump {
+      text-decoration: none;
+      color: var(--ink);
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(15, 34, 48, 0.05);
+      border: 1px solid rgba(15, 34, 48, 0.08);
+      font-weight: 600;
+    }
+    .question-grid, .metrics, .two-col, .three-col {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .question-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .metrics {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .metric-card {
+      padding: 18px;
+    }
+    .metric-card h3 {
+      margin: 0 0 8px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: -0.04em;
+    }
+    .metric-card p, .panel p, .question-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .exec { border-top: 5px solid var(--exec); }
+    .product { border-top: 5px solid var(--product); }
+    .crm { border-top: 5px solid var(--crm); }
+    .finance { border-top: 5px solid var(--finance); }
+    .section {
+      padding-top: 8px;
+      margin-top: 12px;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+    }
+    .section-sub {
+      color: var(--muted);
+      max-width: 55ch;
+    }
+    .two-col {
+      grid-template-columns: 1fr 1fr;
+    }
+    .three-col {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .panel h3 {
+      margin: 0 0 12px;
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: -0.04em;
+    }
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(15, 34, 48, 0.05);
+      border: 1px solid rgba(15, 34, 48, 0.08);
+      font-size: 0.9rem;
+    }
+    .table-wrap {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.93rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      border-top: 1px solid rgba(15, 34, 48, 0.08);
+      text-align: left;
+      vertical-align: top;
+    }
+    thead th {
+      border-top: none;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 0.77rem;
+      letter-spacing: 0.09em;
+    }
+    .footer-note {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .visual-mode .top-nav,
+    .visual-mode .question-grid,
+    .visual-mode .footer-note {
+      display: none;
+    }
+    .visual-mode .hero-aside .nav-card:last-child {
+      display: none;
+    }
+    .visual-mode .shell {
+      padding-top: 24px;
+    }
+    @media (max-width: 1100px) {
+      .hero, .question-grid, .metrics, .two-col, .three-col {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 760px) {
+      .hero, .question-grid, .metrics, .two-col, .three-col {
+        grid-template-columns: 1fr;
+      }
+      .shell { padding: 20px 14px 42px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p id="hero-kicker" class="eyebrow">RevOps Stakeholder Pack</p>
+        <h1 id="hero-title">C-Level Overview with Product, CRM, and Finance Drilldowns</h1>
+        <p id="hero-description">
+          This dashboard mirrors the stakeholder markdown flow: executive summary first, then function-specific
+          drilldowns in the order Product, CRM, and Finance. Use it as the live presentation layer for leadership
+          and departmental reviews.
+        </p>
+      </div>
+      <div class="hero-aside">
+        <div class="nav-card">
+          <p class="eyebrow">Reporting Window</p>
+          <h3>Jan 2023 to Mar 2025</h3>
+          <p>Built from the local DuckDB warehouse after the latest successful dbt rebuild.</p>
+        </div>
+        <div class="nav-card">
+          <p class="eyebrow">How to Use</p>
+          <p>Start with the executive section, then choose the drilldown based on the stakeholder question.</p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="top-nav">
+      <a class="jump" href="#executive-overview">Executive Overview</a>
+      <a class="jump" href="#product-drilldown">Product Drilldown</a>
+      <a class="jump" href="#crm-drilldown">CRM Drilldown</a>
+      <a class="jump" href="#finance-drilldown">Finance Drilldown</a>
+    </nav>
+
+    <section class="question-grid">
+      <article class="question-card">
+        <p class="eyebrow">Choose Product</p>
+        <p>Use when the stakeholder asks about funnel leakage, conversion movement, traffic quality, or campaign efficiency.</p>
+      </article>
+      <article class="question-card">
+        <p class="eyebrow">Choose CRM</p>
+        <p>Use when the stakeholder asks about churn, retention, segment quality, or channel quality over time.</p>
+      </article>
+      <article class="question-card">
+        <p class="eyebrow">Choose Finance</p>
+        <p>Use when the stakeholder asks about revenue, discounts, vendor concentration, returns, or commercial risk.</p>
+      </article>
+    </section>
+
+    <section id="executive-overview" class="section" data-page="executive">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">CEO | CRO | COO | CFO</p>
+          <h2>Executive Overview</h2>
+        </div>
+        <p class="section-sub">One screen for business health before choosing a function-specific drilldown.</p>
+      </div>
+      <div class="metrics">
+        <article class="metric-card exec">
+          <p class="eyebrow">Net Revenue</p>
+          <h3>EUR 25,036.92</h3>
+          <p>Realized revenue after refunds</p>
+        </article>
+        
+        <article class="metric-card exec">
+          <p class="eyebrow">Orders</p>
+          <h3>76</h3>
+          <p>AOV EUR 329.43</p>
+        </article>
+        
+        <article class="metric-card exec">
+          <p class="eyebrow">Customers</p>
+          <h3>85</h3>
+          <p>65 inactive for 90+ days</p>
+        </article>
+        
+        <article class="metric-card exec">
+          <p class="eyebrow">Funnel Conversion</p>
+          <h3>16.26%</h3>
+          <p>Page view to purchase</p>
+        </article>
+        </div>
+      <div class="two-col">
+        <article class="panel">
+          <h3>C-Level Insights</h3>
+          <ul><li>Dec 2024 was the strongest revenue month at EUR 3,941.01.</li><li>Referral is the strongest acquisition path with a 21.95% page-to-purchase rate.</li><li>76.47% of customers are inactive for more than 90 days, making retention the biggest cross-functional risk.</li><li>Paid Search carries the largest campaign budget at EUR 30,670.00 but EUR 0.00 attributed revenue.</li></ul>
+        </article>
+        <article class="panel">
+          <h3>Executive Fields</h3>
+          <div class="chips"><span class='chip'>net_revenue_after_refunds</span><span class='chip'>order_count</span><span class='chip'>avg_order_value</span><span class='chip'>total_discounts</span><span class='chip'>acquisition_channel</span><span class='chip'>page_to_purchase_rate</span><span class='chip'>retention_band</span><span class='chip'>churn_flag</span><span class='chip'>budget_eur</span><span class='chip'>attributed_revenue</span><span class='chip'>vendor_name</span><span class='chip'>gmv</span><span class='chip'>return_rate</span></div>
+        </article>
+      </div>
+      <div class="three-col">
+        <article class="panel">
+          <h3>Revenue Health</h3>
+          <p>EUR 25,036.92 net revenue from 76 orders at EUR 329.43 AOV.</p>
+        </article>
+        <article class="panel">
+          <h3>Funnel Health</h3>
+          <p>16.26% page-to-purchase conversion across 123 page-view sessions.</p>
+        </article>
+        <article class="panel">
+          <h3>Customer Health</h3>
+          <p>65 customers inactive for more than 90 days, or 76.47% of the base.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="product-drilldown" class="section" data-page="product">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Chief Product Officer | Product Manager | Growth Lead</p>
+          <h2>Product Drilldown</h2>
+        </div>
+        <p class="section-sub">For conversion performance, funnel friction, channel quality, and campaign efficiency.</p>
+      </div>
+      <div class="metrics">
+        <article class="metric-card product">
+          <p class="eyebrow">Best Channel</p>
+          <h3>Referral 21.95%</h3>
+          <p>9 purchases from 41 page sessions</p>
+        </article>
+        
+        <article class="metric-card product">
+          <p class="eyebrow">Weakest Scaled Channel</p>
+          <h3>Paid Search 6.67%</h3>
+          <p>Lowest conversion among meaningful traffic sources</p>
+        </article>
+        
+        <article class="metric-card product">
+          <p class="eyebrow">Best Device</p>
+          <h3>Mobile 19.12%</h3>
+          <p>Highest page-to-purchase rate by device</p>
+        </article>
+        
+        <article class="metric-card product">
+          <p class="eyebrow">Top Journey</p>
+          <h3>Referral Mobile</h3>
+          <p>Converts at 36.36%</p>
+        </article>
+        </div>
+      <div class="two-col">
+        <article class="panel">
+          <h3>Product Insights</h3>
+          <ul><li>Referral Mobile is the benchmark journey at 36.36% conversion.</li><li>Paid Search is both expensive and weak, converting only 6.67% from page view to purchase.</li><li>Organic Mobile loses 55.56% between page view and product view, pointing to a discovery or landing-page issue.</li><li>Email Desktop is a strong high-intent path and a good reference experience for product optimization.</li></ul>
+        </article>
+        <article class="panel">
+          <h3>Product Fields</h3>
+          <div class="chips"><span class='chip'>channel</span><span class='chip'>device_type</span><span class='chip'>funnel_stage</span><span class='chip'>sessions_at_step</span><span class='chip'>drop_off_rate</span><span class='chip'>conversion_rate_to_purchase</span><span class='chip'>biggest_dropoff_step_for_channel</span><span class='chip'>biggest_dropoff_rate_for_channel</span><span class='chip'>campaign_name</span><span class='chip'>budget_eur</span><span class='chip'>conversions</span><span class='chip'>attributed_revenue</span><span class='chip'>roas</span></div>
+        </article>
+      </div>
+      <div class="two-col">
+        <article class="panel">
+          <h3>Channel Conversion</h3>
+          
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Channel</th><th>Page Sessions</th><th>Purchases</th><th>Page to Purchase</th></tr></thead>
+        <tbody><tr><td>Referral</td><td>41</td><td>9</td><td>21.95%</td></tr><tr><td>Email</td><td>34</td><td>6</td><td>17.65%</td></tr><tr><td>Paid Social</td><td>13</td><td>2</td><td>15.38%</td></tr><tr><td>Organic</td><td>18</td><td>2</td><td>11.11%</td></tr><tr><td>Paid Search</td><td>15</td><td>1</td><td>6.67%</td></tr><tr><td>Unknown</td><td>2</td><td>0</td><td>0.00%</td></tr></tbody>
+      </table>
+    </div>
+    
+        </article>
+        <article class="panel">
+          <h3>Device Conversion</h3>
+          
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Device</th><th>Page Sessions</th><th>Purchases</th><th>Page to Purchase</th></tr></thead>
+        <tbody><tr><td>Mobile</td><td>68</td><td>13</td><td>19.12%</td></tr><tr><td>Desktop</td><td>55</td><td>7</td><td>12.73%</td></tr></tbody>
+      </table>
+    </div>
+    
+        </article>
+      </div>
+      <div class="two-col">
+        <article class="panel">
+          <h3>Channel and Device Journeys</h3>
+          
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Channel</th><th>Device</th><th>Conversion</th><th>Page Drop-off</th><th>Biggest Leak</th></tr></thead>
+        <tbody><tr><td>Referral</td><td>Mobile</td><td>36.36%</td><td>31.82%</td><td>Checkout</td></tr><tr><td>Email</td><td>Desktop</td><td>25.00%</td><td>31.25%</td><td>Checkout</td></tr><tr><td>Organic</td><td>Desktop</td><td>22.22%</td><td>22.22%</td><td>Product View</td></tr><tr><td>Paid Social</td><td>Mobile</td><td>22.22%</td><td>33.33%</td><td>Page View</td></tr><tr><td>Email</td><td>Mobile</td><td>11.11%</td><td>33.33%</td><td>Checkout</td></tr><tr><td>Paid Search</td><td>Mobile</td><td>11.11%</td><td>33.33%</td><td>Add To Cart</td></tr><tr><td>Referral</td><td>Desktop</td><td>5.26%</td><td>31.58%</td><td>Checkout</td></tr><tr><td>Organic</td><td>Mobile</td><td>0.00%</td><td>55.56%</td><td>Product View</td></tr></tbody>
+      </table>
+    </div>
+    
+        </article>
+        <article class="panel">
+          <h3>Campaign Efficiency by Channel</h3>
+          
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Channel</th><th>Budget</th><th>Attributed Revenue</th><th>Blended ROAS</th><th>Conversions</th></tr></thead>
+        <tbody><tr><td>Paid Social</td><td>EUR 11,079.00</td><td>EUR 393.57</td><td>3.55%</td><td>369</td></tr><tr><td>Email</td><td>EUR 5,995.00</td><td>EUR 210.82</td><td>3.52%</td><td>802</td></tr><tr><td>Paid Search</td><td>EUR 30,670.00</td><td>EUR 0.00</td><td>0.00%</td><td>274</td></tr><tr><td>Organic</td><td>EUR 6,884.00</td><td>EUR 0.00</td><td>0.00%</td><td>724</td></tr><tr><td>Referral</td><td>EUR 4,676.00</td><td>EUR 0.00</td><td>0.00%</td><td>708</td></tr></tbody>
+      </table>
+    </div>
+    
+        </article>
+      </div>
+    </section>
+
+    <section id="crm-drilldown" class="section" data-page="crm">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Head of CRM | Lifecycle Marketing | Retention Manager</p>
+          <h2>CRM Drilldown</h2>
+        </div>
+        <p class="section-sub">For inactivity risk, segment health, retention bands, and channel-level customer quality.</p>
+      </div>
+      <div class="metrics">
+        <article class="metric-card crm">
+          <p class="eyebrow">Churned</p>
+          <h3>53</h3>
+          <p>Customers in the churned retention band</p>
+        </article>
+        
+        <article class="metric-card crm">
+          <p class="eyebrow">Active</p>
+          <h3>15</h3>
+          <p>Customers still transacting recently</p>
+        </article>
+        
+        <article class="metric-card crm">
+          <p class="eyebrow">Best Value Channel</p>
+          <h3>Referral EUR 454.20</h3>
+          <p>69.57% inactivity rate</p>
+        </article>
+        
+        <article class="metric-card crm">
+          <p class="eyebrow">Best Value Segment</p>
+          <h3>Premium EUR 333.39</h3>
+          <p>1.48 orders on average</p>
+        </article>
+        </div>
+      <div class="two-col">
+        <article class="panel">
+          <h3>CRM Insights</h3>
+          <ul><li>Referral delivers the highest customer value at EUR 454.20 average spend.</li><li>Paid Search and Paid Social are lifecycle quality problems, not just acquisition problems, because both go inactive quickly.</li><li>Premium customers are more valuable at EUR 333.39 average spend, but still require better retention.</li><li>March 2024 and April 2024 are the strongest month-0 retention cohorts and should be used as onboarding benchmarks.</li></ul>
+        </article>
+        <article class="panel">
+          <h3>CRM Fields</h3>
+          <div class="chips"><span class='chip'>customer_id</span><span class='chip'>segment</span><span class='chip'>acquisition_channel</span><span class='chip'>retention_band</span><span class='chip'>churn_flag</span><span class='chip'>total_orders</span><span class='chip'>total_spend</span><span class='chip'>avg_order_value</span><span class='chip'>first_order_date</span><span class='chip'>last_order_date</span><span class='chip'>days_since_last_order</span><span class='chip'>cohort_month</span><span class='chip'>months_since_signup</span><span class='chip'>retention_rate</span></div>
+        </article>
+      </div>
+      <div class="two-col">
+        <article class="panel">
+          <h3>Retention Bands</h3>
+          
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Band</th><th>Customers</th></tr></thead>
+        <tbody><tr><td>Churned</td><td>53</td></tr><tr><td>Active</td><td>15</td></tr><tr><td>At Risk</td><td>12</td></tr><tr><td>New</td><td>5</td></tr></tbody>
+      </table>
+    </div>
+    
+        </article>
+        <article class="panel">
+          <h3>Channel Quality</h3>
+          
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Channel</th><th>Customers</th><th>Inactive 90+ Days</th><th>Avg Spend</th><th>Avg Orders</th></tr></thead>
+        <tbody><tr><td>Unknown</td><td>3</td><td>100.00%</td><td>EUR 296.00</td><td>0.67</td></tr><tr><td>Paid Search</td><td>13</td><td>84.62%</td><td>EUR 148.08</td><td>0.85</td></tr><tr><td>Paid Social</td><td>13</td><td>84.62%</td><td>EUR 349.73</td><td>1.15</td></tr><tr><td>Email</td><td>20</td><td>75.00%</td><td>EUR 255.37</td><td>1.25</td></tr><tr><td>Referral</td><td>23</td><td>69.57%</td><td>EUR 454.20</td><td>1.00</td></tr><tr><td>Organic</td><td>13</td><td>69.23%</td><td>EUR 163.33</td><td>1.08</td></tr></tbody>
+      </table>
+    </div>
+    
+        </article>
+      </div>
+      <div class="two-col">
+        <article class="panel">
+          <h3>Segment Quality</h3>
+          
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Segment</th><th>Customers</th><th>Avg Spend</th><th>Inactive 90+ Days</th><th>Avg Orders</th></tr></thead>
+        <tbody><tr><td>Premium</td><td>25</td><td>EUR 333.39</td><td>80.00%</td><td>1.48</td></tr><tr><td>Standard</td><td>60</td><td>EUR 278.37</td><td>75.00%</td><td>0.88</td></tr></tbody>
+      </table>
+    </div>
+    
+        </article>
+        <article class="panel">
+          <h3>Best Month-0 Cohorts</h3>
+          
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Cohort</th><th>Cohort Size</th><th>Retained</th><th>Month-0 Retention</th></tr></thead>
+        <tbody><tr><td>Apr 2024</td><td>3</td><td>1</td><td>33.33%</td></tr><tr><td>Mar 2024</td><td>3</td><td>1</td><td>33.33%</td></tr><tr><td>Dec 2024</td><td>8</td><td>2</td><td>25.00%</td></tr><tr><td>Oct 2023</td><td>4</td><td>1</td><td>25.00%</td></tr><tr><td>Nov 2024</td><td>3</td><td>0</td><td>0.00%</td></tr><tr><td>Oct 2024</td><td>3</td><td>0</td><td>0.00%</td></tr><tr><td>Sep 2024</td><td>3</td><td>0</td><td>0.00%</td></tr><tr><td>Aug 2024</td><td>3</td><td>0</td><td>0.00%</td></tr></tbody>
+      </table>
+    </div>
+    
+        </article>
+      </div>
+    </section>
+
+    <section id="finance-drilldown" class="section" data-page="finance">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">CFO | Finance Manager | Commercial Operations</p>
+          <h2>Finance Drilldown</h2>
+        </div>
+        <p class="section-sub">For revenue movement, discount pressure, vendor concentration, and return-risk exposure.</p>
+      </div>
+      <div class="metrics">
+        <article class="metric-card finance">
+          <p class="eyebrow">Best Month</p>
+          <h3>Dec 2024</h3>
+          <p>EUR 3,941.01 net revenue</p>
+        </article>
+        
+        <article class="metric-card finance">
+          <p class="eyebrow">Next Best Month</p>
+          <h3>Feb 2025</h3>
+          <p>EUR 2,825.55 net revenue</p>
+        </article>
+        
+        <article class="metric-card finance">
+          <p class="eyebrow">Top Vendor</p>
+          <h3>AlpenStyle</h3>
+          <p>EUR 10,267.80 GMV</p>
+        </article>
+        
+        <article class="metric-card finance">
+          <p class="eyebrow">Healthiest Top Vendor</p>
+          <h3>IsarTech</h3>
+          <p>Zero return rate within the top vendors</p>
+        </article>
+        </div>
+      <div class="two-col">
+        <article class="panel">
+          <h3>Finance Insights</h3>
+          <ul><li>Revenue is concentrated in a few months, led by Dec 2024 and Feb 2025.</li><li>AlpenStyle is the top GMV vendor, but scale and safety do not perfectly align.</li><li>IsarTech is the healthiest top vendor because it combines high GMV with zero returns.</li><li>The underperforming vendor list should be reviewed together with assortment, vendor management, and return-risk actions.</li></ul>
+        </article>
+        <article class="panel">
+          <h3>Finance Fields</h3>
+          <div class="chips"><span class='chip'>year</span><span class='chip'>month</span><span class='chip'>quarter</span><span class='chip'>gross_revenue</span><span class='chip'>total_discounts</span><span class='chip'>net_revenue</span><span class='chip'>refund_amount</span><span class='chip'>net_revenue_after_refunds</span><span class='chip'>order_count</span><span class='chip'>avg_order_value</span><span class='chip'>mom_growth_pct</span><span class='chip'>vendor_name</span><span class='chip'>vendor_category</span><span class='chip'>vendor_status</span><span class='chip'>gmv</span><span class='chip'>vendor_revenue</span><span class='chip'>return_rate</span><span class='chip'>gmv_rank</span><span class='chip'>underperforming</span></div>
+        </article>
+      </div>
+      <div class="two-col">
+        <article class="panel">
+          <h3>Top Revenue Months</h3>
+          
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Year</th><th>Month</th><th>Net Revenue</th><th>Orders</th><th>AOV</th><th>MoM Growth</th></tr></thead>
+        <tbody><tr><td>2024</td><td>Dec</td><td>EUR 3,941.01</td><td>9</td><td>EUR 437.89</td><td>114.08%</td></tr><tr><td>2025</td><td>Feb</td><td>EUR 2,825.55</td><td>11</td><td>EUR 256.87</td><td>147.30%</td></tr><tr><td>2024</td><td>Feb</td><td>EUR 2,416.71</td><td>5</td><td>EUR 483.34</td><td>251.61%</td></tr><tr><td>2023</td><td>Sep</td><td>EUR 1,993.05</td><td>3</td><td>EUR 664.35</td><td>276.79%</td></tr><tr><td>2024</td><td>Nov</td><td>EUR 1,840.94</td><td>5</td><td>EUR 368.19</td><td>548.56%</td></tr><tr><td>2024</td><td>Aug</td><td>EUR 1,687.53</td><td>5</td><td>EUR 337.51</td><td>420.67%</td></tr><tr><td>2024</td><td>Apr</td><td>EUR 1,426.10</td><td>4</td><td>EUR 356.53</td><td>2.95%</td></tr><tr><td>2024</td><td>Mar</td><td>EUR 1,385.30</td><td>3</td><td>EUR 461.77</td><td>-42.68%</td></tr></tbody>
+      </table>
+    </div>
+    
+        </article>
+        <article class="panel">
+          <h3>Vendor Performance</h3>
+          
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Vendor</th><th>Category</th><th>GMV</th><th>Vendor Revenue</th><th>Return Rate</th><th>Rank</th></tr></thead>
+        <tbody><tr><td>AlpenStyle</td><td>Fashion</td><td>EUR 10,267.80</td><td>EUR 995.35</td><td>33.33%</td><td>1</td></tr><tr><td>RheinRunway</td><td>Fashion</td><td>EUR 4,811.91</td><td>EUR 328.16</td><td>50.00%</td><td>2</td></tr><tr><td>IsarTech</td><td>Electronics</td><td>EUR 4,611.82</td><td>EUR 621.50</td><td>0.00%</td><td>3</td></tr><tr><td>HarborThreads</td><td>Fashion</td><td>EUR 2,721.56</td><td>EUR 412.40</td><td>16.67%</td><td>4</td></tr><tr><td>MainMarket</td><td>Home</td><td>EUR 2,291.45</td><td>EUR 254.60</td><td>0.00%</td><td>5</td></tr><tr><td>UrbanCanvas</td><td>Lifestyle</td><td>EUR 2,260.23</td><td>EUR 216.30</td><td>0.00%</td><td>6</td></tr><tr><td>HafenGoods</td><td>Electronics</td><td>EUR 2,084.97</td><td>EUR 118.00</td><td>50.00%</td><td>7</td></tr><tr><td>MitteKitchen</td><td>Food</td><td>EUR 1,523.13</td><td>EUR 119.14</td><td>37.50%</td><td>8</td></tr><tr><td>SkylineSelect</td><td>Electronics</td><td>EUR 1,356.85</td><td>EUR 222.90</td><td>0.00%</td><td>9</td></tr><tr><td>SpreeEats</td><td>Food</td><td>EUR 1,346.14</td><td>EUR 170.66</td><td>0.00%</td><td>10</td></tr></tbody>
+      </table>
+    </div>
+    
+        </article>
+      </div>
+      <div class="panel">
+        <h3>Underperforming Vendors</h3>
+        
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Vendor</th><th>Category</th><th>Status</th><th>GMV</th><th>Return Rate</th></tr></thead>
+        <tbody><tr><td>CityCycle</td><td>Lifestyle</td><td>Active</td><td>EUR 512.97</td><td>50.00%</td></tr><tr><td>PrenzlauPantry</td><td>Food</td><td>Active</td><td>EUR 527.80</td><td>0.00%</td></tr><tr><td>BavariaBasics</td><td>Lifestyle</td><td>Active</td><td>EUR 659.93</td><td>0.00%</td></tr></tbody>
+      </table>
+    </div>
+    
+      </div>
+    </section>
+
+    <p class="footer-note">
+      Generated locally from <code>warehouse\marketplace_analytics.duckdb</code>. The localhost root redirects to this dashboard automatically.
+    </p>
+  </main>
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const view = params.get("view");
+      const mode = params.get("mode");
+      const heroTitle = document.getElementById("hero-title");
+      const heroDescription = document.getElementById("hero-description");
+      const heroKicker = document.getElementById("hero-kicker");
+      const copy = {
+        executive: {
+          title: "Executive Overview",
+          kicker: "C-Level Reporting",
+          description: "Cross-functional business health across revenue, funnel performance, customer retention, and vendor risk."
+        },
+        product: {
+          title: "Product Drilldown",
+          kicker: "Product Stakeholder View",
+          description: "Conversion, funnel leakage, traffic quality, device performance, and campaign efficiency for product and growth leaders."
+        },
+        crm: {
+          title: "CRM Drilldown",
+          kicker: "CRM Stakeholder View",
+          description: "Retention bands, inactivity risk, acquisition quality, and segment economics for CRM and lifecycle teams."
+        },
+        finance: {
+          title: "Finance Drilldown",
+          kicker: "Finance Stakeholder View",
+          description: "Revenue movement, discount pressure, vendor concentration, and return-rate exposure for finance stakeholders."
+        }
+      };
+
+      if (view && copy[view]) {
+        document.querySelectorAll("[data-page]").forEach((section) => {
+          section.style.display = section.dataset.page === view ? "" : "none";
+        });
+        heroTitle.textContent = copy[view].title;
+        heroKicker.textContent = copy[view].kicker;
+        heroDescription.textContent = copy[view].description;
+        document.title = copy[view].title + " | RevOps Stakeholder Dashboard";
+      }
+
+      if (mode === "visual") {
+        document.body.classList.add("visual-mode");
+      }
+    })();
+  </script>
+</body>
+</html>

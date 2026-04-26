@@ -1,0 +1,190 @@
+version: 2
+
+sources:
+  - name: raw_marketplace
+    description: Raw marketplace operational extracts landed from the MySQL source system before transformation.
+    schema: raw
+    tables:
+      - name: customers
+        description: Raw customer master records including signup metadata and acquisition source.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns:
+          - name: customer_id
+            description: Operational identifier for the customer record in the source application.
+          - name: name
+            description: Customer full name as captured at signup.
+          - name: email
+            description: Email address used by the customer account, including deliberate duplicates in the raw data.
+          - name: city
+            description: Primary delivery city declared by the customer.
+          - name: signup_date
+            description: Calendar date when the customer account was created.
+          - name: acquisition_channel
+            description: Marketing or referral channel that originally acquired the customer.
+          - name: segment
+            description: Commercial segment assigned to the customer, either premium or standard.
+          - name: age_group
+            description: Customer age band used for CRM segmentation.
+          - name: country
+            description: Country associated with the customer account.
+          - name: loaded_at
+            description: Synthetic ingestion timestamp used for source freshness monitoring.
+
+      - name: orders
+        description: Raw order header records containing order status, payment details, and monetary values.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns:
+          - name: order_id
+            description: Unique identifier for the marketplace order.
+          - name: customer_id
+            description: Customer responsible for placing the order.
+          - name: vendor_id
+            description: Fulfilment vendor associated with the order.
+          - name: order_date
+            description: Date the order was placed in the checkout flow.
+          - name: status
+            description: Raw order lifecycle state from the source system.
+          - name: total_amount
+            description: Gross order amount before applying the order-level discount.
+          - name: discount_amount
+            description: Order-level discount amount applied at checkout.
+          - name: payment_method
+            description: Payment instrument used to place the order.
+          - name: delivery_city
+            description: Destination city captured on the order.
+          - name: loaded_at
+            description: Synthetic ingestion timestamp used for source freshness monitoring.
+
+      - name: order_items
+        description: Raw line items belonging to marketplace orders.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns:
+          - name: item_id
+            description: Unique identifier for the order line item.
+          - name: order_id
+            description: Parent order identifier for the line item.
+          - name: product_id
+            description: Product purchased on the order line.
+          - name: quantity
+            description: Unit quantity purchased for the product.
+          - name: unit_price
+            description: Raw transaction unit price captured at checkout.
+          - name: discount_pct
+            description: Percentage discount applied at the line-item level.
+          - name: loaded_at
+            description: Synthetic ingestion timestamp used for source freshness monitoring.
+
+      - name: vendors
+        description: Vendor master data used to evaluate marketplace supply performance.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns:
+          - name: vendor_id
+            description: Unique vendor identifier in the marketplace platform.
+          - name: vendor_name
+            description: Public-facing vendor brand name.
+          - name: category
+            description: Primary business category assigned to the vendor.
+          - name: city
+            description: Operating city of the vendor.
+          - name: commission_rate
+            description: Marketplace commission rate charged on the vendor's orders.
+          - name: onboarded_date
+            description: Date when the vendor joined the marketplace.
+          - name: status
+            description: Operational status of the vendor partnership.
+          - name: rating
+            description: Average customer rating for the vendor.
+          - name: loaded_at
+            description: Synthetic ingestion timestamp used for source freshness monitoring.
+
+      - name: products
+        description: Product catalog records listed by vendors.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns:
+          - name: product_id
+            description: Unique identifier for the listed product.
+          - name: vendor_id
+            description: Vendor that owns the product listing.
+          - name: product_name
+            description: Customer-facing product name.
+          - name: category
+            description: Product category associated with the listing.
+          - name: base_price
+            description: Standard catalog price for the product.
+          - name: stock_quantity
+            description: Available stock quantity recorded in the source system.
+          - name: is_active
+            description: Boolean flag showing whether the product is currently active.
+          - name: created_at
+            description: Date when the product was created in the catalog.
+          - name: loaded_at
+            description: Synthetic ingestion timestamp used for source freshness monitoring.
+
+      - name: campaigns
+        description: Marketing campaign metadata and media performance metrics.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns:
+          - name: campaign_id
+            description: Unique campaign identifier from the marketing planning sheet.
+          - name: campaign_name
+            description: Business-friendly name of the campaign.
+          - name: channel
+            description: Acquisition channel where the campaign was run.
+          - name: start_date
+            description: Planned campaign launch date.
+          - name: end_date
+            description: Planned campaign end date.
+          - name: budget_eur
+            description: Budget allocated to the campaign in EUR.
+          - name: impressions
+            description: Total media impressions delivered by the campaign.
+          - name: clicks
+            description: Total clicks generated by the campaign.
+          - name: conversions
+            description: Marketing conversions reported by the campaign.
+          - name: target_segment
+            description: Customer segment the campaign was designed to acquire or retain.
+          - name: loaded_at
+            description: Synthetic ingestion timestamp used for source freshness monitoring.
+
+      - name: events
+        description: Raw clickstream events that describe the customer funnel from browse to purchase.
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns:
+          - name: event_id
+            description: Unique event identifier.
+          - name: customer_id
+            description: Customer tied to the session event.
+          - name: session_id
+            description: Browser or app session identifier, with deliberate nulls in the raw feed.
+          - name: event_type
+            description: Funnel event captured in the clickstream.
+          - name: event_timestamp
+            description: Timestamp when the event happened.
+          - name: page_url
+            description: URL or logical page route where the event happened.
+          - name: device_type
+            description: Device used during the session.
+          - name: loaded_at
+            description: Synthetic ingestion timestamp used for source freshness monitoring.

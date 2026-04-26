@@ -1,0 +1,1196 @@
+{
+  "generated_at": "2026-04-26T21:59",
+  "warehouse_path": "C:\\Users\\Yeswanth Reddy\\OneDrive\\Desktop\\Cover Letter\\DataWarehouse-and-DBMS\\warehouse\\marketplace_analytics.duckdb",
+  "outputs": {
+    "overview": {
+      "total_net_revenue": "25036.92",
+      "total_orders": 76,
+      "overall_aov": 329.43,
+      "total_discounts": "2643.43",
+      "active_months": 22,
+      "first_month": "2023-01-01",
+      "last_month": "2025-03-01",
+      "total_customers": 85,
+      "churned_customers": 65,
+      "churn_rate": 0.7647,
+      "page_sessions": 123,
+      "purchase_sessions": 20.0,
+      "page_to_purchase_rate": 0.1626
+    },
+    "revenue": [
+      {
+        "year": 2023,
+        "month": 1,
+        "net_revenue_after_refunds": "121.15",
+        "order_count": 1,
+        "avg_order_value": 121.15,
+        "mom_growth_pct": null
+      },
+      {
+        "year": 2023,
+        "month": 4,
+        "net_revenue_after_refunds": "435.34",
+        "order_count": 2,
+        "avg_order_value": 217.67,
+        "mom_growth_pct": 2.5934
+      },
+      {
+        "year": 2023,
+        "month": 7,
+        "net_revenue_after_refunds": "0.00",
+        "order_count": 2,
+        "avg_order_value": 0.0,
+        "mom_growth_pct": -1.0
+      },
+      {
+        "year": 2023,
+        "month": 8,
+        "net_revenue_after_refunds": "528.95",
+        "order_count": 1,
+        "avg_order_value": 528.95,
+        "mom_growth_pct": null
+      },
+      {
+        "year": 2023,
+        "month": 9,
+        "net_revenue_after_refunds": "1993.05",
+        "order_count": 3,
+        "avg_order_value": 664.35,
+        "mom_growth_pct": 2.7679
+      },
+      {
+        "year": 2023,
+        "month": 10,
+        "net_revenue_after_refunds": "650.37",
+        "order_count": 1,
+        "avg_order_value": 650.37,
+        "mom_growth_pct": -0.6737
+      },
+      {
+        "year": 2023,
+        "month": 11,
+        "net_revenue_after_refunds": "115.03",
+        "order_count": 1,
+        "avg_order_value": 115.03,
+        "mom_growth_pct": -0.8231
+      },
+      {
+        "year": 2023,
+        "month": 12,
+        "net_revenue_after_refunds": "1328.67",
+        "order_count": 3,
+        "avg_order_value": 442.89,
+        "mom_growth_pct": 10.5506
+      },
+      {
+        "year": 2024,
+        "month": 1,
+        "net_revenue_after_refunds": "687.32",
+        "order_count": 3,
+        "avg_order_value": 229.11,
+        "mom_growth_pct": -0.4827
+      },
+      {
+        "year": 2024,
+        "month": 2,
+        "net_revenue_after_refunds": "2416.71",
+        "order_count": 5,
+        "avg_order_value": 483.34,
+        "mom_growth_pct": 2.5161
+      },
+      {
+        "year": 2024,
+        "month": 3,
+        "net_revenue_after_refunds": "1385.30",
+        "order_count": 3,
+        "avg_order_value": 461.77,
+        "mom_growth_pct": -0.4268
+      },
+      {
+        "year": 2024,
+        "month": 4,
+        "net_revenue_after_refunds": "1426.10",
+        "order_count": 4,
+        "avg_order_value": 356.53,
+        "mom_growth_pct": 0.0295
+      },
+      {
+        "year": 2024,
+        "month": 6,
+        "net_revenue_after_refunds": "110.26",
+        "order_count": 1,
+        "avg_order_value": 110.26,
+        "mom_growth_pct": -0.9227
+      },
+      {
+        "year": 2024,
+        "month": 7,
+        "net_revenue_after_refunds": "324.11",
+        "order_count": 1,
+        "avg_order_value": 324.11,
+        "mom_growth_pct": 1.9395
+      },
+      {
+        "year": 2024,
+        "month": 8,
+        "net_revenue_after_refunds": "1687.53",
+        "order_count": 5,
+        "avg_order_value": 337.51,
+        "mom_growth_pct": 4.2067
+      },
+      {
+        "year": 2024,
+        "month": 9,
+        "net_revenue_after_refunds": "451.46",
+        "order_count": 3,
+        "avg_order_value": 150.49,
+        "mom_growth_pct": -0.7325
+      },
+      {
+        "year": 2024,
+        "month": 10,
+        "net_revenue_after_refunds": "283.85",
+        "order_count": 3,
+        "avg_order_value": 94.62,
+        "mom_growth_pct": -0.3713
+      },
+      {
+        "year": 2024,
+        "month": 11,
+        "net_revenue_after_refunds": "1840.94",
+        "order_count": 5,
+        "avg_order_value": 368.19,
+        "mom_growth_pct": 5.4856
+      },
+      {
+        "year": 2024,
+        "month": 12,
+        "net_revenue_after_refunds": "3941.01",
+        "order_count": 9,
+        "avg_order_value": 437.89,
+        "mom_growth_pct": 1.1408
+      },
+      {
+        "year": 2025,
+        "month": 1,
+        "net_revenue_after_refunds": "1142.58",
+        "order_count": 5,
+        "avg_order_value": 228.52,
+        "mom_growth_pct": -0.7101
+      },
+      {
+        "year": 2025,
+        "month": 2,
+        "net_revenue_after_refunds": "2825.55",
+        "order_count": 11,
+        "avg_order_value": 256.87,
+        "mom_growth_pct": 1.473
+      },
+      {
+        "year": 2025,
+        "month": 3,
+        "net_revenue_after_refunds": "1341.64",
+        "order_count": 4,
+        "avg_order_value": 335.41,
+        "mom_growth_pct": -0.5252
+      }
+    ],
+    "vendors": [
+      {
+        "vendor_name": "AlpenStyle",
+        "vendor_category": "fashion",
+        "vendor_status": "active",
+        "gmv": "10267.80",
+        "vendor_revenue": "995.35",
+        "order_count": 12,
+        "return_rate": 0.3333,
+        "gmv_rank": 1
+      },
+      {
+        "vendor_name": "RheinRunway",
+        "vendor_category": "fashion",
+        "vendor_status": "active",
+        "gmv": "4811.91",
+        "vendor_revenue": "328.16",
+        "order_count": 6,
+        "return_rate": 0.5,
+        "gmv_rank": 2
+      },
+      {
+        "vendor_name": "IsarTech",
+        "vendor_category": "electronics",
+        "vendor_status": "active",
+        "gmv": "4611.82",
+        "vendor_revenue": "621.50",
+        "order_count": 3,
+        "return_rate": 0.0,
+        "gmv_rank": 3
+      },
+      {
+        "vendor_name": "HarborThreads",
+        "vendor_category": "fashion",
+        "vendor_status": "active",
+        "gmv": "2721.56",
+        "vendor_revenue": "412.40",
+        "order_count": 6,
+        "return_rate": 0.1667,
+        "gmv_rank": 4
+      },
+      {
+        "vendor_name": "MainMarket",
+        "vendor_category": "home",
+        "vendor_status": "active",
+        "gmv": "2291.45",
+        "vendor_revenue": "254.60",
+        "order_count": 5,
+        "return_rate": 0.0,
+        "gmv_rank": 5
+      },
+      {
+        "vendor_name": "UrbanCanvas",
+        "vendor_category": "lifestyle",
+        "vendor_status": "active",
+        "gmv": "2260.23",
+        "vendor_revenue": "216.30",
+        "order_count": 6,
+        "return_rate": 0.0,
+        "gmv_rank": 6
+      },
+      {
+        "vendor_name": "HafenGoods",
+        "vendor_category": "electronics",
+        "vendor_status": "active",
+        "gmv": "2084.97",
+        "vendor_revenue": "118.00",
+        "order_count": 4,
+        "return_rate": 0.5,
+        "gmv_rank": 7
+      },
+      {
+        "vendor_name": "MitteKitchen",
+        "vendor_category": "food",
+        "vendor_status": "active",
+        "gmv": "1523.13",
+        "vendor_revenue": "119.14",
+        "order_count": 8,
+        "return_rate": 0.375,
+        "gmv_rank": 8
+      }
+    ],
+    "underperformers": [
+      {
+        "vendor_name": "CityCycle",
+        "vendor_category": "lifestyle",
+        "gmv": "512.97",
+        "return_rate": 0.5
+      },
+      {
+        "vendor_name": "PrenzlauPantry",
+        "vendor_category": "food",
+        "gmv": "527.80",
+        "return_rate": 0.0
+      },
+      {
+        "vendor_name": "BavariaBasics",
+        "vendor_category": "lifestyle",
+        "gmv": "659.93",
+        "return_rate": 0.0
+      }
+    ],
+    "campaigns": [
+      {
+        "campaign_name": "Email Wave 4",
+        "channel": "email",
+        "target_segment": "premium",
+        "budget_eur": "1520.000",
+        "conversions": 226,
+        "attributed_revenue": "210.82",
+        "roas": 0.1387,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Paid Social Wave 4",
+        "channel": "paid_social",
+        "target_segment": "standard",
+        "budget_eur": "3969.000",
+        "conversions": 89,
+        "attributed_revenue": "393.57",
+        "roas": 0.0992,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Email Wave 3",
+        "channel": "email",
+        "target_segment": "premium",
+        "budget_eur": "1714.000",
+        "conversions": 183,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Organic Wave 4",
+        "channel": "organic",
+        "target_segment": "premium",
+        "budget_eur": "2298.000",
+        "conversions": 300,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Paid Search Wave 3",
+        "channel": "paid_search",
+        "target_segment": "standard",
+        "budget_eur": "7997.000",
+        "conversions": 83,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Referral Wave 1",
+        "channel": "referral",
+        "target_segment": "premium",
+        "budget_eur": "1053.000",
+        "conversions": 128,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Referral Wave 3",
+        "channel": "referral",
+        "target_segment": "premium",
+        "budget_eur": "1241.000",
+        "conversions": 213,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Paid Search Wave 1",
+        "channel": "paid_search",
+        "target_segment": "standard",
+        "budget_eur": "8303.000",
+        "conversions": 47,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Paid Social Wave 1",
+        "channel": "paid_social",
+        "target_segment": "standard",
+        "budget_eur": "4537.000",
+        "conversions": 144,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Organic Wave 2",
+        "channel": "organic",
+        "target_segment": "standard",
+        "budget_eur": "2249.000",
+        "conversions": 213,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Email Wave 2",
+        "channel": "email",
+        "target_segment": "premium",
+        "budget_eur": "1563.000",
+        "conversions": 227,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Referral Wave 4",
+        "channel": "referral",
+        "target_segment": "premium",
+        "budget_eur": "830.000",
+        "conversions": 191,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Paid Social Wave 3",
+        "channel": "paid_social",
+        "target_segment": "standard",
+        "budget_eur": "2573.000",
+        "conversions": 136,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Paid Search Wave 2",
+        "channel": "paid_search",
+        "target_segment": "standard",
+        "budget_eur": "7869.000",
+        "conversions": 93,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Paid Search Wave 4",
+        "channel": "paid_search",
+        "target_segment": "standard",
+        "budget_eur": "6501.000",
+        "conversions": 51,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Referral Wave 2",
+        "channel": "referral",
+        "target_segment": "premium",
+        "budget_eur": "1552.000",
+        "conversions": 176,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Email Wave 1",
+        "channel": "email",
+        "target_segment": "premium",
+        "budget_eur": "1198.000",
+        "conversions": 166,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      },
+      {
+        "campaign_name": "Organic Wave 1",
+        "channel": "organic",
+        "target_segment": "standard",
+        "budget_eur": "2337.000",
+        "conversions": 211,
+        "attributed_revenue": "0.00",
+        "roas": 0.0,
+        "roi_tier": "poor"
+      }
+    ],
+    "campaign_channels": [
+      {
+        "channel": "paid_social",
+        "budget": "11079.00",
+        "attributed_revenue": "393.57",
+        "blended_roas": 0.0355,
+        "conversions": 369
+      },
+      {
+        "channel": "email",
+        "budget": "5995.00",
+        "attributed_revenue": "210.82",
+        "blended_roas": 0.0352,
+        "conversions": 802
+      },
+      {
+        "channel": "paid_search",
+        "budget": "30670.00",
+        "attributed_revenue": "0.00",
+        "blended_roas": 0.0,
+        "conversions": 274
+      },
+      {
+        "channel": "organic",
+        "budget": "6884.00",
+        "attributed_revenue": "0.00",
+        "blended_roas": 0.0,
+        "conversions": 724
+      },
+      {
+        "channel": "referral",
+        "budget": "4676.00",
+        "attributed_revenue": "0.00",
+        "blended_roas": 0.0,
+        "conversions": 708
+      }
+    ],
+    "funnel_channels": [
+      {
+        "channel": "referral",
+        "page_sessions": 41,
+        "purchase_sessions": 9.0,
+        "page_to_purchase_rate": 0.2195
+      },
+      {
+        "channel": "email",
+        "page_sessions": 34,
+        "purchase_sessions": 6.0,
+        "page_to_purchase_rate": 0.1765
+      },
+      {
+        "channel": "paid_social",
+        "page_sessions": 13,
+        "purchase_sessions": 2.0,
+        "page_to_purchase_rate": 0.1538
+      },
+      {
+        "channel": "organic",
+        "page_sessions": 18,
+        "purchase_sessions": 2.0,
+        "page_to_purchase_rate": 0.1111
+      },
+      {
+        "channel": "paid_search",
+        "page_sessions": 15,
+        "purchase_sessions": 1.0,
+        "page_to_purchase_rate": 0.0667
+      },
+      {
+        "channel": "unknown",
+        "page_sessions": 2,
+        "purchase_sessions": 0.0,
+        "page_to_purchase_rate": 0.0
+      }
+    ],
+    "funnel_devices": [
+      {
+        "device_type": "mobile",
+        "page_sessions": 68,
+        "purchase_sessions": 13.0,
+        "page_to_purchase_rate": 0.1912
+      },
+      {
+        "device_type": "desktop",
+        "page_sessions": 55,
+        "purchase_sessions": 7.0,
+        "page_to_purchase_rate": 0.1273
+      }
+    ],
+    "funnel_channel_device": [
+      {
+        "channel": "referral",
+        "device_type": "mobile",
+        "page_sessions": 22,
+        "drop_off_rate": 0.3182,
+        "page_to_purchase_rate": 0.3636
+      },
+      {
+        "channel": "email",
+        "device_type": "desktop",
+        "page_sessions": 16,
+        "drop_off_rate": 0.3125,
+        "page_to_purchase_rate": 0.25
+      },
+      {
+        "channel": "organic",
+        "device_type": "desktop",
+        "page_sessions": 9,
+        "drop_off_rate": 0.2222,
+        "page_to_purchase_rate": 0.2222
+      },
+      {
+        "channel": "paid_social",
+        "device_type": "mobile",
+        "page_sessions": 9,
+        "drop_off_rate": 0.3333,
+        "page_to_purchase_rate": 0.2222
+      },
+      {
+        "channel": "email",
+        "device_type": "mobile",
+        "page_sessions": 18,
+        "drop_off_rate": 0.3333,
+        "page_to_purchase_rate": 0.1111
+      },
+      {
+        "channel": "paid_search",
+        "device_type": "mobile",
+        "page_sessions": 9,
+        "drop_off_rate": 0.3333,
+        "page_to_purchase_rate": 0.1111
+      },
+      {
+        "channel": "referral",
+        "device_type": "desktop",
+        "page_sessions": 19,
+        "drop_off_rate": 0.3158,
+        "page_to_purchase_rate": 0.0526
+      },
+      {
+        "channel": "organic",
+        "device_type": "mobile",
+        "page_sessions": 9,
+        "drop_off_rate": 0.5556,
+        "page_to_purchase_rate": 0.0
+      }
+    ],
+    "crm_channels": [
+      {
+        "acquisition_channel": "unknown",
+        "customers": 3,
+        "churned_customers": 3,
+        "churn_rate": 1.0,
+        "avg_total_spend": 296.0,
+        "avg_total_orders": 0.67
+      },
+      {
+        "acquisition_channel": "paid_social",
+        "customers": 13,
+        "churned_customers": 11,
+        "churn_rate": 0.8462,
+        "avg_total_spend": 349.73,
+        "avg_total_orders": 1.15
+      },
+      {
+        "acquisition_channel": "paid_search",
+        "customers": 13,
+        "churned_customers": 11,
+        "churn_rate": 0.8462,
+        "avg_total_spend": 148.08,
+        "avg_total_orders": 0.85
+      },
+      {
+        "acquisition_channel": "email",
+        "customers": 20,
+        "churned_customers": 15,
+        "churn_rate": 0.75,
+        "avg_total_spend": 255.37,
+        "avg_total_orders": 1.25
+      },
+      {
+        "acquisition_channel": "referral",
+        "customers": 23,
+        "churned_customers": 16,
+        "churn_rate": 0.6957,
+        "avg_total_spend": 454.2,
+        "avg_total_orders": 1.0
+      },
+      {
+        "acquisition_channel": "organic",
+        "customers": 13,
+        "churned_customers": 9,
+        "churn_rate": 0.6923,
+        "avg_total_spend": 163.33,
+        "avg_total_orders": 1.08
+      }
+    ],
+    "crm_segments": [
+      {
+        "segment": "premium",
+        "customers": 25,
+        "avg_total_spend": 333.39,
+        "churn_rate": 0.8,
+        "avg_total_orders": 1.48
+      },
+      {
+        "segment": "standard",
+        "customers": 60,
+        "avg_total_spend": 278.37,
+        "churn_rate": 0.75,
+        "avg_total_orders": 0.88
+      }
+    ],
+    "retention_bands": [
+      {
+        "retention_band": "churned",
+        "customers": 53
+      },
+      {
+        "retention_band": "active",
+        "customers": 15
+      },
+      {
+        "retention_band": "at_risk",
+        "customers": 12
+      },
+      {
+        "retention_band": "new",
+        "customers": 5
+      }
+    ],
+    "cohorts": [
+      {
+        "cohort_month": "2023-01-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-01-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-01-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-01-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-02-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-02-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-02-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-02-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-03-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-03-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-03-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-03-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-04-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-04-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-04-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-04-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-05-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-05-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-05-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-05-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-06-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-06-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-06-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-06-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-07-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-07-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-07-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-07-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-08-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-08-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-08-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-08-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-09-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-09-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-09-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-09-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-10-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.25
+      },
+      {
+        "cohort_month": "2023-10-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-10-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-10-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-11-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-11-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-11-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-11-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-12-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-12-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-12-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2023-12-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-01-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-01-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-01-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-01-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-02-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-02-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.3333
+      },
+      {
+        "cohort_month": "2024-02-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-02-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-03-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.3333
+      },
+      {
+        "cohort_month": "2024-03-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-03-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-03-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-04-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.3333
+      },
+      {
+        "cohort_month": "2024-04-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-04-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-04-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-05-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-05-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-05-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-05-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-06-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-06-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-06-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-06-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-07-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-07-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-07-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-07-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-08-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-08-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-08-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-08-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-09-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-09-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-09-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.3333
+      },
+      {
+        "cohort_month": "2024-09-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-10-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-10-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-10-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-10-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-11-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-11-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-11-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-11-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.3333
+      },
+      {
+        "cohort_month": "2024-12-01",
+        "months_since_signup": 0,
+        "retention_rate": 0.25
+      },
+      {
+        "cohort_month": "2024-12-01",
+        "months_since_signup": 1,
+        "retention_rate": 0.0
+      },
+      {
+        "cohort_month": "2024-12-01",
+        "months_since_signup": 2,
+        "retention_rate": 0.125
+      },
+      {
+        "cohort_month": "2024-12-01",
+        "months_since_signup": 3,
+        "retention_rate": 0.0
+      }
+    ]
+  }
+}

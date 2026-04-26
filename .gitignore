@@ -1,0 +1,7 @@
+.venv/
+.user.yml
+dbt_packages/
+logs/
+target/
+warehouse/*
+!warehouse/.gitkeep
