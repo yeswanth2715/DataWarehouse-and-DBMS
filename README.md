@@ -2,13 +2,6 @@
 
 Marketplace RevOps analytics project built with `MySQL`, `dbt`, `DuckDB`, and stakeholder-ready dashboard outputs.
 
-## Resume Summary
-**Data Warehouse & SQL Analytics** (`MySQL`, `dbt`, `DuckDB`)
-
-- Designed and normalized a marketplace data model across 7 operational source tables, improving consistency for customers, orders, products, vendors, campaigns, and clickstream events.
-- Built SQL analytics and warehouse transformation workflows using joins, CTEs, window functions, aggregations, and layered dbt models for CRM, product, and finance reporting.
-- Automated reporting outputs with MySQL stored procedures, triggers, scheduled events, and dbt build/test workflows, then packaged the results into stakeholder dashboards.
-- Improved performance and data reliability through indexing, `EXPLAIN` plan analysis, reusable macros, source freshness checks, and automated data-quality tests.
 
 Portfolio assets:
 - Live stakeholder dashboard: [dashboard/revops_stakeholder_dashboard.html](dashboard/revops_stakeholder_dashboard.html)
